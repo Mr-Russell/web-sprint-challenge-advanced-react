@@ -30,13 +30,37 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Explain how to build stateful class components.
 
+  To build a class component, you would declare the component as a "class" (instead of a "function" or "const"), and stipulate that it "extends React.Component". Before calling the render method, you should create a constructor function that decalares state using "this.state". In your component's functions, it is useful to update the states with "this.setState({nameOfState: newValue})".
+
+
 2. Describe the different phases of the component lifecycle.
+
+  Mounting Phase: This is where your inital state gets defined in your constructor function, the render method is invoked, and the "componentDidMount" method gets called.
+
+  Updating Phase: This is where all the states and data being used in your component get updated. The render method gets invoked again, unless something different is specified in the "shouldComponentUpdate" method.
+
+  Unmounting Phase: Removes the component from being displayed to the user. The "componentWillUnmount" method is called to stop up any event listeners from continuing to run and use memory.
+
 
 3. Demonstrate an understanding of class component lifecycle methods.
 
+  render: This stipulates what gets displayed to the user.
+
+  componentDidMount: This method is called immediately after the Render method gets called the first time. This is usefult for setting the state for our component so it can be rendered with any necessary data. It is also useful to fetch any data in this phase, so our comonent has all the data it needs to display and function properly.
+
+  componentDidUpdate: This stage is useful for updating any data in our component after it is initally mounted. If a user inteacts with our component, for example, by clicking a button or entering data into a form, our component may need to fetch updated data from an API. This is the stage where the component would update itself with the new data.
+
+  componentWillUnmount: This stage is useful for cleaning up any event listeners the component was using so those event listeners do not keep running in the background and use memory that other parts of the app could utilize instead. This stage is helpful for keeping the app running quickly and smoothly.
+
 4. Define stateful logic.
 
+  Stateful Logic is logic built into a component, and usually uses and/or updates data stored in state.
+
+
 5. Describe how to test a React component with React Testing Library.
+
+  Testing a react component with the React Testing Library involves several steps. First you must import react-testing-library into your test file. Then you define your test. You should set up your test (i.e. "arrange" it) by building your code so it can be easily tested, making sure each section renders properly. Then you "act" by querying for a specific element or portion of code to test. Finally you assert if your expected return matches your actual return.
+  
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
