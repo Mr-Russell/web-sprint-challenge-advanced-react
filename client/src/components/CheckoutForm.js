@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+import useForm from '../hooks/useForm.js'
+
 const initialValue = {
   firstName: "",
   lastName: "",
@@ -15,11 +17,14 @@ const initialValue = {
 
 const CheckoutForm = (props) => {
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [values, setValues] = useState(initialValue);
 
-  const handleChanges = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-  };
+  // CHANGED useState to useForm, AND REMOVED setValues from array
+  const [values, handleChanges] = useForm(initialValue);
+
+  // MOVED handleChanges to useForm Hook
+  // const handleChanges = (e) => {
+  //   setValues({ ...values, [e.target.name]: e.target.value });
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -66,7 +71,7 @@ const CheckoutForm = (props) => {
           Zip:
           <input name="zip" value={values.zip} onChange={handleChanges} />
         </label>
-        <button>Checkout</button>
+        <button data-testid="checkoutBtn">Checkout</button>
       </form>
 
       {showSuccessMessage && (
